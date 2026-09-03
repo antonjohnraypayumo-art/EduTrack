@@ -27,8 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     try {
       if (_isSignUp) {
-        final cred =
-            await _auth.signUp(_emailCtrl.text, _passCtrl.text);
+        final cred = await _auth.signUp(_emailCtrl.text, _passCtrl.text);
         await cred.user?.updateDisplayName(_nameCtrl.text.trim());
         await FirestoreService()
             .createInitialProfileIfMissing(name: _nameCtrl.text.trim());

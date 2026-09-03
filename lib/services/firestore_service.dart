@@ -66,8 +66,11 @@ class FirestoreService {
   // ---------------- SUBJECTS ----------------
 
   Stream<List<Subject>> streamSubjects() {
-    return _userDoc.collection('subjects').orderBy('name').snapshots().map(
-        (q) => q.docs.map((d) => Subject.fromDoc(d)).toList());
+    return _userDoc
+        .collection('subjects')
+        .orderBy('name')
+        .snapshots()
+        .map((q) => q.docs.map((d) => Subject.fromDoc(d)).toList());
   }
 
   Future<void> ensureSubjectsExist() async {
@@ -90,7 +93,8 @@ class FirestoreService {
   /// Overall progress = average of all subject progress values.
   double overallProgressFrom(List<Subject> subjects) {
     if (subjects.isEmpty) return 0;
-    final total = subjects.fold<double>(0, (sum, s) => sum + s.progress);
+    final total =
+        subjects.fold<double>(0, (total, subject) => total + subject.progress);
     return total / subjects.length;
   }
 
@@ -178,7 +182,8 @@ class FirestoreService {
         return [
           {
             'title': 'Introduction to Variables and Data Types',
-            'description': 'Learn about variables, data types, and basic operations',
+            'description':
+                'Learn about variables, data types, and basic operations',
             'type': 'Article',
             'url': null,
             'createdAt': now,
@@ -350,9 +355,8 @@ class FirestoreService {
     final existing = await _userDoc
         .collection('activities')
         .where('date',
-            isGreaterThanOrEqualTo: Timestamp.fromDate(
-                DateTime(DateTime.now().year, DateTime.now().month,
-                    DateTime.now().day)))
+            isGreaterThanOrEqualTo: Timestamp.fromDate(DateTime(
+                DateTime.now().year, DateTime.now().month, DateTime.now().day)))
         .get();
     if (existing.docs.isNotEmpty) return;
 
@@ -456,8 +460,10 @@ class FirestoreService {
   // ---------------- ACHIEVEMENTS ----------------
 
   Stream<List<Achievement>> streamAchievements() {
-    return _userDoc.collection('achievements').snapshots().map(
-        (q) => q.docs.map((d) => Achievement.fromDoc(d)).toList());
+    return _userDoc
+        .collection('achievements')
+        .snapshots()
+        .map((q) => q.docs.map((d) => Achievement.fromDoc(d)).toList());
   }
 
   // ---------------- XP / LEVEL / STREAK HELPERS ----------------

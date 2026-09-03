@@ -63,7 +63,7 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(
+                  const Text(
                     'Study Materials',
                     style: TextStyle(
                       fontSize: 14,
@@ -114,9 +114,9 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
 
                 final documents = snap.data ?? [];
                 if (documents.isEmpty) {
-                  return Center(
+                  return const Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 40),
+                      padding: EdgeInsets.symmetric(vertical: 40),
                       child: Text(
                         'No documents available',
                         style: TextStyle(color: AppColors.textGrey),
@@ -182,7 +182,7 @@ class _DocumentCardState extends State<_DocumentCard> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -196,7 +196,7 @@ class _DocumentCardState extends State<_DocumentCard> {
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              color: AppColors.primary.withOpacity(0.1),
+              color: AppColors.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -224,7 +224,7 @@ class _DocumentCardState extends State<_DocumentCard> {
                 const SizedBox(height: 4),
                 Text(
                   widget.document.description,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 13,
                     color: AppColors.textGrey,
                   ),
@@ -240,7 +240,7 @@ class _DocumentCardState extends State<_DocumentCard> {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.1),
+                        color: AppColors.primary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
@@ -260,7 +260,7 @@ class _DocumentCardState extends State<_DocumentCard> {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.success.withOpacity(0.1),
+                          color: AppColors.success.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: const Text(
@@ -295,9 +295,8 @@ class _DocumentCardState extends State<_DocumentCard> {
               decoration: BoxDecoration(
                 color: _isCompleted ? AppColors.success : Colors.transparent,
                 border: Border.all(
-                  color: _isCompleted
-                      ? AppColors.success
-                      : Colors.grey.shade400,
+                  color:
+                      _isCompleted ? AppColors.success : Colors.grey.shade400,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(4),

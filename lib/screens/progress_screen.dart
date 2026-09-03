@@ -146,12 +146,11 @@ class ProgressScreen extends StatelessWidget {
                                 gradient: AppColors.headerGradient,
                                 borderRadius: BorderRadius.circular(16),
                               ),
-                              child: Row(
+                              child: const Row(
                                 children: [
-                                  const Text('🧠',
-                                      style: TextStyle(fontSize: 24)),
-                                  const SizedBox(width: 12),
-                                  const Expanded(
+                                  Text('🧠', style: TextStyle(fontSize: 24)),
+                                  SizedBox(width: 12),
+                                  Expanded(
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -160,14 +159,15 @@ class ProgressScreen extends StatelessWidget {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold)),
-                                        Text('Earn up to +15% progress per subject',
+                                        Text(
+                                            'Earn up to +15% progress per subject',
                                             style: TextStyle(
                                                 color: Colors.white70,
                                                 fontSize: 12)),
                                       ],
                                     ),
                                   ),
-                                  const Icon(Icons.chevron_right,
+                                  Icon(Icons.chevron_right,
                                       color: Colors.white),
                                 ],
                               ),
@@ -181,7 +181,8 @@ class ProgressScreen extends StatelessWidget {
                               ),
                               child: Row(
                                 children: [
-                                  const Text('🥉', style: TextStyle(fontSize: 26)),
+                                  const Text('🥉',
+                                      style: TextStyle(fontSize: 26)),
                                   const SizedBox(width: 10),
                                   Expanded(
                                     child: Text(
@@ -241,8 +242,7 @@ class ProgressScreen extends StatelessWidget {
                                 return GridView.count(
                                   crossAxisCount: 3,
                                   shrinkWrap: true,
-                                  physics:
-                                      const NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   mainAxisSpacing: 10,
                                   crossAxisSpacing: 10,
                                   childAspectRatio: 0.95,

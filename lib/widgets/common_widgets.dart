@@ -25,7 +25,7 @@ class StatCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.04),
+              color: Colors.black.withValues(alpha: 0.04),
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
@@ -100,11 +100,8 @@ class ActivityTile extends StatelessWidget {
                   title,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    decoration:
-                        completed ? TextDecoration.lineThrough : null,
-                    color: completed
-                        ? AppColors.textGrey
-                        : AppColors.textDark,
+                    decoration: completed ? TextDecoration.lineThrough : null,
+                    color: completed ? AppColors.textGrey : AppColors.textDark,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -176,8 +173,7 @@ class SubjectProgressBar extends StatelessWidget {
                         color: AppColors.textDark)),
               ),
               Text('${(progress * 100).round()}%',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: color)),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: color)),
             ],
           ),
           const SizedBox(height: 8),
@@ -225,7 +221,8 @@ class AchievementBadge extends StatelessWidget {
             const SizedBox(height: 6),
             Text(name,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 12, color: AppColors.textDark)),
+                style:
+                    const TextStyle(fontSize: 12, color: AppColors.textDark)),
           ],
         ),
       ),

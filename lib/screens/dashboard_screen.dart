@@ -88,8 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           children: [
                             Expanded(
                               child: Column(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     _formattedDate(),
@@ -121,8 +120,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         const SizedBox(height: 20),
                         Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text("Today's Progress",
                                 style: TextStyle(color: Colors.white70)),
@@ -139,12 +137,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             value: todayProgress,
                             minHeight: 8,
                             backgroundColor: Colors.white24,
-                            valueColor: const AlwaysStoppedAnimation(
-                                Colors.white),
+                            valueColor:
+                                const AlwaysStoppedAnimation(Colors.white),
                           ),
                         ),
                         const SizedBox(height: 6),
-                        Text('$done of ${activities.length} activities completed',
+                        Text(
+                            '$done of ${activities.length} activities completed',
                             style: const TextStyle(
                                 color: Colors.white70, fontSize: 12)),
                       ],
@@ -170,13 +169,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         const SizedBox(height: 24),
                         Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text('My Subjects',
                                 style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold)),
+                                    fontSize: 16, fontWeight: FontWeight.bold)),
                             TextButton(
                               onPressed: () {},
                               child: const Text('View All'),
@@ -187,7 +184,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         StreamBuilder<List<Subject>>(
                           stream: _service.streamSubjects(),
                           builder: (context, snap) {
-                            if (snap.connectionState == ConnectionState.waiting) {
+                            if (snap.connectionState ==
+                                ConnectionState.waiting) {
                               return const Padding(
                                 padding: EdgeInsets.symmetric(vertical: 16),
                                 child: Center(
@@ -198,7 +196,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                             if (snap.hasError) {
                               return Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                                 child: Text(
                                   'Error loading subjects: ${snap.error}',
                                   style: const TextStyle(
@@ -221,8 +220,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             }
                             return GridView.builder(
                               shrinkWrap: true,
-                              physics:
-                                  const NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
@@ -238,10 +236,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   onTap: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            DocumentsScreen(
-                                              subject: subject,
-                                            ),
+                                        builder: (context) => DocumentsScreen(
+                                          subject: subject,
+                                        ),
                                       ),
                                     );
                                   },
@@ -252,13 +249,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         const SizedBox(height: 24),
                         Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text('Daily Activities',
                                 style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold)),
+                                    fontSize: 16, fontWeight: FontWeight.bold)),
                             TextButton(
                               onPressed: () {},
                               child: const Text('See All'),
@@ -302,10 +297,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
   String _formattedDate() {
     final now = DateTime.now();
     const days = [
-      'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
     ];
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
     ];
     return '${days[now.weekday - 1]}, ${months[now.month - 1]} ${now.day}';
   }
@@ -384,7 +396,7 @@ class _TipCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.primary.withOpacity(0.08),
+        color: AppColors.primary.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -437,15 +449,15 @@ class _TodayProjectCard extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 3),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: Colors.white24,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(p.level,
-                        style: const TextStyle(
-                            color: Colors.white, fontSize: 11)),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 11)),
                   ),
                   const SizedBox(width: 8),
                   Text(
@@ -474,8 +486,7 @@ class _TodayProjectCard extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (_) => const ProjectsScreen()),
+                      MaterialPageRoute(builder: (_) => const ProjectsScreen()),
                     );
                   },
                   child: const Text('Start Project →'),
@@ -510,7 +521,7 @@ class _SubjectCard extends StatelessWidget {
           border: Border.all(color: Colors.grey.shade200),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),

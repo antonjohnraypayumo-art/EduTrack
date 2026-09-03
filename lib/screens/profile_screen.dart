@@ -21,8 +21,7 @@ class ProfileScreen extends StatelessWidget {
         return StreamBuilder<List<Subject>>(
           stream: service.streamSubjects(),
           builder: (context, subjectSnap) {
-            final overall =
-                service.overallProgressFrom(subjectSnap.data ?? []);
+            final overall = service.overallProgressFrom(subjectSnap.data ?? []);
 
             return StreamBuilder<Map<ProjectStatus, int>>(
               stream: service.streamProjectCounts(),
@@ -87,7 +86,9 @@ class ProfileScreen extends StatelessWidget {
                               value: '${(overall * 100).round()}%',
                               label: 'Progress'),
                           StatCard(
-                              emoji: '📁', value: '$done done', label: 'Projects'),
+                              emoji: '📁',
+                              value: '$done done',
+                              label: 'Projects'),
                           StatCard(
                               emoji: '🔥',
                               value: '${profile?.streakDays ?? 0} days',
@@ -100,10 +101,13 @@ class ProfileScreen extends StatelessWidget {
                         label: 'Edit Profile',
                         onTap: () => _showEditSheet(context, service, profile),
                       ),
-                      _MenuTile(emoji: '🔔', label: 'Notifications', onTap: () {}),
+                      _MenuTile(
+                          emoji: '🔔', label: 'Notifications', onTap: () {}),
                       _MenuTile(emoji: '⚙️', label: 'Settings', onTap: () {}),
-                      _MenuTile(emoji: '❓', label: 'Help & Support', onTap: () {}),
-                      _MenuTile(emoji: '📜', label: 'Privacy Policy', onTap: () {}),
+                      _MenuTile(
+                          emoji: '❓', label: 'Help & Support', onTap: () {}),
+                      _MenuTile(
+                          emoji: '📜', label: 'Privacy Policy', onTap: () {}),
                       const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,
@@ -202,7 +206,7 @@ class _Chip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.primary.withOpacity(0.1),
+        color: AppColors.primary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(text,
